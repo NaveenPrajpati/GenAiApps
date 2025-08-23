@@ -12,13 +12,18 @@ from langchain_experimental.agents import create_pandas_dataframe_agent
 # Optional: safer SQL path via DuckDB (for big joins / sheet selection)
 import duckdb
 
+# Headless plotting so Streamlit can capture figures reliably
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+
 load_dotenv()
-st.set_page_config(page_title="Ask your data", page_icon="📊", layout="wide")
-st.title("📊➡️🤖 Ask Your Data (LangChain)")
 
 
 def dataAnalyst():
-
+    st.set_page_config(page_title="Ask your data", page_icon="📊", layout="wide")
     show_code = False
     use_duckdb = True
     st.markdown(

@@ -6,7 +6,6 @@ from langchain_community.document_loaders.web_base import WebBaseLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains.summarize import load_summarize_chain
 from langchain_openai import ChatOpenAI
-from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 
 load_dotenv()
