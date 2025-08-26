@@ -1,9 +1,4 @@
-from typing import Optional
-import os
-import math
-
 from langchain_openai import ChatOpenAI
-from langchain_core.tools import tool
 from langchain.agents import AgentExecutor, create_react_agent
 from langchain_core.prompts import PromptTemplate
 from langchain_community.tools import DuckDuckGoSearchRun
