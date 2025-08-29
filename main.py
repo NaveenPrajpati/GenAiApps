@@ -5,6 +5,7 @@ from basicApps.DataVisulalize.app import dataVisualize
 from basicApps.MedicalImageFinder.app import medicalImageDiagnose
 from basicApps.MemeGenerator.app import generateMeme
 from basicApps.BreakupRecovery.app import breakupRecovery
+from basicApps.WebScraper.app import webScraper
 
 option = st.sidebar.selectbox(
     "Basic Agents:",
@@ -15,6 +16,7 @@ option = st.sidebar.selectbox(
         "Medical Image Diagnose",
         "Generate Meme",
         "Breakup Recovery",
+        "Web Scraper",
     ),
 )
 
@@ -30,3 +32,5 @@ elif option == "Generate Meme":
     generateMeme()
 elif option == "Breakup Recovery":
     breakupRecovery()
+elif option == "Web Scraper":
+    webScraper()
