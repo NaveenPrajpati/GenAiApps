@@ -3,6 +3,4 @@ streamlit>=1.36.0
 langchain>=0.2.12
 langchain-core>=0.2.36
 langchain-openai>=0.2.5
-scrapegraphai>=1.6.0
-langchain-scrapegraph>=0.0.6
 pydantic>=2.7.0

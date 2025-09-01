@@ -1,39 +1,28 @@
-## 💻 Web Scrapping AI Agent
-This Streamlit app allows you to scrape a website using OpenAI API and the scrapegraphai library. Simply provide your OpenAI API key, enter the URL of the website you want to scrape, and specify what you want the AI agent to extract from the website.
+# LangChain Web Scraper
 
-### Features
-- Scrape any website by providing the URL
-- Utilize OpenAI's LLMs (GPT-3.5-turbo or GPT-4) for intelligent scraping
-- Customize the scraping task by specifying what you want the AI agent to extract
+**A simple Streamlit app that lets you input a website URL and an extraction prompt—then uses LangChain to scrape and extract structured information from the page.**
 
-### How to get Started?
+## Features
 
-1. Clone the GitHub repository
+- **User-friendly UI:** Powered by Streamlit; input a URL and describe what you want to extract.
+- **Web page loading:** Uses `WebBaseLoader` to fetch content from the website.
+- **Chunking for long pages:** Splits content using `RecursiveCharacterTextSplitter` to handle long documents.
+- **Structured extraction with LLMs:** Uses OpenAI (or other providers) with `with_structured_output()` and a Pydantic model (`ExtractionResult`) to parse output into clean, validated data.  
+  This aligns with current best practices in LangChain—where structured output enables robust schema-based extraction. [oai_citation:0‡LangChain](https://python.langchain.com/docs/concepts/structured_outputs/?utm_source=chatgpt.com) [oai_citation:1‡Medium](https://medium.com/%40obaff/python-ai-web-scraper-tutorial-35e0cc6f7398?utm_source=chatgpt.com) [oai_citation:2‡GitHub](https://github.com/langchain-ai/langchain/issues/32687?utm_source=chatgpt.com)
+- **Clear, organized results:** Presents summaries, extracted items, and evidence snippets in the UI.
 
-```bash
-git clone https://github.com/Shubhamsaboo/awesome-llm-apps.git
-cd awesome-llm-apps/advanced_tools_frameworks/web_scrapping_ai_agent
-```
-2. Install the required dependencies:
+---
 
-```bash
-pip install -r requirements.txt
-```
-3. Get your OpenAI API Key
+## How It Works
 
-- Sign up for an [OpenAI account](https://platform.openai.com/) (or the LLM provider of your choice) and obtain your API key.
+1. **Define a schema**  
+   A `Pydantic` class, `ExtractionResult`, defines the expected output structure.
 
-4. Run the Streamlit App
-```bash
-streamlit run ai_scrapper.py
-```
+2. **Load and chunk content**  
+   `WebBaseLoader` grabs the page content, and `RecursiveCharacterTextSplitter` breaks it into manageable chunks.
 
-### How it Works?
-
-- The app prompts you to enter your OpenAI API key, which is used to authenticate and access the OpenAI language models.
-- You can select the desired language model (GPT-3.5-turbo or GPT-4) for the scraping task.
-- Enter the URL of the website you want to scrape in the provided text input field.
-- Specify what you want the AI agent to extract from the website by entering a user prompt.
-- The app creates a SmartScraperGraph object using the provided URL, user prompt, and OpenAI configuration.
-- The SmartScraperGraph object scrapes the website and extracts the requested information using the specified language model.
-- The scraped results are displayed in the app for you to view
+3. **Use the LLM with structured output**  
+   With OpenAI (or another supported provider), we do:
+   ```python
+   llm = ChatOpenAI(...).with_structured_output(ExtractionResult)
+   ```
