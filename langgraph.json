@@ -1,7 +1,7 @@
 {
   "dependencies": [""],
   "graphs": {
-    "agent": "./RAGs/agenticRag/app.py:graph"
+    "agent": "./agents/planExecute/app.py:graph"
   },
   "env": ".env"
 }
